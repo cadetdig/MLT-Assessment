@@ -1,0 +1,14 @@
+{
+  "name": "previan-assessment-app",
+  "version": "2.2.0",
+  "private": true,
+  "description": "Previan Assessment App: 360-degree leadership feedback with invited rater logins and automatic tallies.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test tests/app.test.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

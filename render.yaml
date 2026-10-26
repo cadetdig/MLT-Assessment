@@ -1,0 +1,28 @@
+# One-click online setup for Render (render.com).
+# In Render: New + → Blueprint → pick the GitHub repository holding this folder.
+services:
+  - type: web
+    name: previan-assessment-app
+    runtime: node
+    plan: starter            # a paid plan is required for the saved-data disk below
+    buildCommand: "echo No build step needed"
+    startCommand: node server.js
+    healthCheckPath: /healthz
+    autoDeploy: false
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: HOST
+        value: 0.0.0.0
+      - key: DATA_DIR
+        value: /var/data
+      - key: FORCE_HTTPS
+        value: "1"
+      - key: TRUST_PROXY
+        value: "1"
+      - key: SETUP_KEY
+        generateValue: true  # Render creates a private random key; copy it from the Environment tab for first-time setup
+    disk:
+      name: previan-data
+      mountPath: /var/data
+      sizeGB: 1
